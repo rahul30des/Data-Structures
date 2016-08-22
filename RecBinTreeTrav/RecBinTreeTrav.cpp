@@ -17,7 +17,7 @@ public:
         right = NULL;
     }
 };
-
+// Should be rewritten to make the attributes private and below functions public for the class
 Node* insert(Node *root, int value) {
     if (!root) {
         root = new Node();
