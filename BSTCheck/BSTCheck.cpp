@@ -4,49 +4,37 @@
 using namespace std;
 
 class Node {
-public:
-    int value;
-    Node *left;
-    Node *right;
-    Node(int val) {
-        value = val;
-        left = right = NULL;
-    }
+    public:    
+        int value;
+        Node *left, *right;
+        Node(int val) {
+            value = val;
+            left = right = NULL;
+        }
 };
 
-void createBST(Node **root) {
+
+void CreateBST(Node **root) {
     *root = new Node(10);
-    Node *temp = *root;
-    temp->left = new Node(8);
-    temp->right = new Node(12);
-    temp->left->left = new Node(7);
-    temp->left->right = new Node(9);
-    temp->right->left = new Node(11);
-    temp->right->right = new Node(5);
+    Node *tmp = *root;
+    tmp->left = new Node(7);
+    tmp->right = new Node(12);
+    tmp->left->left = new Node(5);
+    tmp->left->right = new Node(8);
+    tmp->right->left = new Node(11);
+    tmp->right->right = new Node(3);
 }
 
-bool isBSTUtil(Node *root, int min, int max) {
+bool IsBST(Node *root, int min, int max) {
     if(root == NULL) {
         return true;
     }
-    if(((root->value > min) && (root->value < max)) && isBSTUtil(root->left, min,
-                                                    root->value) &&
-       isBSTUtil(root->right, root->value, max)) {
-        return true;
-    } else {
-        return false;
-    }      
+    return ((root->value > min && root->value < max) && IsBST(root->left, min, root->value) && IsBST(root->right, root->value, max));
 }
 
-
-bool isBST(Node *root) {
-    return isBSTUtil(root, INT_MIN, INT_MAX);
-}
-
-// Main
+// Main Function
 int main() {
-    Node *root;
-    createBST(&root);
-    cout<<boolalpha<<isBST(root);
-    return 0;
+    Node *root = NULL;
+    CreateBST(&root);
+    cout<<boolalpha<<IsBST(root, INT_MIN, INT_MAX)<<endl;
 }
