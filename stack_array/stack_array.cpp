@@ -5,15 +5,15 @@ using namespace std;
 class Stack
 {
     private:
+        int top;
         int *arr;
-        int top;   
         int ssize;
     public:
         Stack(int n)
         {
-            arr = new int[n];
-            top = -1; 
             ssize = n;
+            top = -1;
+            arr = new int[n];
         }
 
         void Push(int x) 
@@ -22,7 +22,7 @@ class Stack
                 cout<<"Error: Stack Overflow when trying to push "<<x<<endl;
                 return;
             }
-            arr[++top] = x;
+            arr[++top] = x; 
         }
  
         void Pop() 
@@ -39,21 +39,10 @@ class Stack
             return arr[top];
         }
  
-        int IsEmpty()
-        {
-            if(top == -1) {
-                return 1;
-            }
-            return 0;
-        }
-
         void Print() {
-            int i;
-            cout<<"Stack: ";
-            for(i = 0; i <= top; i++) {
-                cout<<arr[i]<<"\t";
+            for(int i = 0; i <= top; i++) {
+                cout<<arr[i]<<"\t";     
             }
-            cout<<endl;
         }
 };
 
@@ -63,13 +52,18 @@ int main()
     Stack S(3);
     S.Push(2);
     S.Print();
+    cout<<endl;
     S.Push(5);
     S.Print();
+    cout<<endl;
     S.Push(10);
     S.Print();
+    cout<<endl;
     S.Push(12);
     S.Pop();
     S.Print();
+    cout<<endl;
     S.Push(12);
     S.Print();
+    cout<<endl;
 }
