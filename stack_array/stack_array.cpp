@@ -36,13 +36,18 @@ class Stack
  
         int Top() 
         {
-            return arr[top];
+            if(top != -1) {
+                return arr[top];;
+            } else {
+                return INT_MIN;
+            }
         }
  
         void Print() {
             for(int i = 0; i <= top; i++) {
                 cout<<arr[i]<<"\t";     
             }
+            cout<<endl;
         }
 };
 
