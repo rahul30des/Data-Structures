@@ -3,6 +3,8 @@ public:
         vector<int> dp(n+1, -1);
         return climbStairsUtil(n, dp);
     }
+    // Time Complexity O(2^n) - exponential
+    // Space Complexity O(n)
     int climbStairsUtil(int n, vector<int>& dp) {
         if(dp[n] == -1) {
             if(n == 0) {
